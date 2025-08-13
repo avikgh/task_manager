@@ -6,8 +6,7 @@ class AssetsPath {
   static const String backgroundImage = '$_imagePath/background.svg';
   static const String logoImage = '$_imagePath/logo.svg';
 
-  static const Color elevatedButtonColor = Color(0xFF21BF73);
-  static const foreGroundColor = Colors.white;
+  static const Color themeColor = Color(0xFF21BF73);
   static const Color headingTextColor = Colors.black87;
   static const descriptionTextColor = Colors.grey;
 }

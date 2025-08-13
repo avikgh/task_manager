@@ -1,20 +1,23 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:task_manager/ui/screens/sign_up_screen.dart';
+import 'package:task_manager/ui/screens/sign_in_screen.dart';
 import 'package:task_manager/ui/utility/assets_path.dart';
 import 'package:task_manager/ui/widgets/background_widget.dart';
 import 'package:task_manager/ui/widgets/custom_elevated_button.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _emailTEController = TextEditingController();
   final TextEditingController _passwordTEController = TextEditingController();
+  final TextEditingController _firstNameTEController = TextEditingController();
+  final TextEditingController _lastNameTEController = TextEditingController();
+  final TextEditingController _mobileTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -22,6 +25,9 @@ class _SignInScreenState extends State<SignInScreen> {
     super.dispose();
     _emailTEController.dispose();
     _passwordTEController.dispose();
+    _firstNameTEController.dispose();
+    _lastNameTEController.dispose();
+    _mobileTEController.dispose();
   }
 
   String? validate(String? value) {
@@ -44,9 +50,9 @@ class _SignInScreenState extends State<SignInScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: size.height * 0.2),
+                  SizedBox(height: size.height * 0.15),
                   const Text(
-                    'Get Started With',
+                    'Join With Us',
                     style: TextStyle(
                         color: Colors.black87,
                         fontSize: 28,
@@ -56,6 +62,24 @@ class _SignInScreenState extends State<SignInScreen> {
                   TextFormField(
                     controller: _emailTEController,
                     decoration: InputDecoration(hintText: 'Email'),
+                    validator: validate,
+                  ),
+                  const SizedBox(height: 8),
+                  TextFormField(
+                    controller: _firstNameTEController,
+                    decoration: InputDecoration(hintText: 'Firstname'),
+                    validator: validate,
+                  ),
+                  const SizedBox(height: 8),
+                  TextFormField(
+                    controller: _lastNameTEController,
+                    decoration: InputDecoration(hintText: 'Lastname'),
+                    validator: validate,
+                  ),
+                  const SizedBox(height: 8),
+                  TextFormField(
+                    controller: _mobileTEController,
+                    decoration: InputDecoration(hintText: 'Mobile'),
                     validator: validate,
                   ),
                   const SizedBox(height: 8),
@@ -77,43 +101,28 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: size.height * 0.075,
-                  ),
+                  SizedBox(height: size.height * 0.04),
                   Center(
-                    child: Column(
-                      children: [
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Forgot Password?',
-                            style: TextStyle(color: Colors.grey),
-                          ),
-                        ),
-                        RichText(
-                          text: TextSpan(
-                            text: 'Don\'t have an account? ',
-                            style: TextStyle(
-                                color: Colors.black87,
-                                fontWeight: FontWeight.bold),
-                            children: [
-                              TextSpan(
-                                text: 'Sign up',
-                                style: TextStyle(color: AssetsPath.themeColor),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => SignUpScreen(),
-                                      ),
-                                    );
-                                  },
-                              )
-                            ],
-                          ),
-                        )
-                      ],
+                    child: RichText(
+                      text: TextSpan(
+                        text: 'Have account? ',
+                        style: TextStyle(
+                            color: Colors.black87, fontWeight: FontWeight.bold),
+                        children: [
+                          TextSpan(
+                            text: 'Sign in',
+                            style: TextStyle(color: AssetsPath.themeColor),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignInScreen()),
+                                );
+                              },
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],

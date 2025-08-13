@@ -11,13 +11,13 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      child: child,
       style: ElevatedButton.styleFrom(
-        backgroundColor: AssetsPath.elevatedButtonColor,
+        backgroundColor: AssetsPath.themeColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8)
         )
       ),
+      child: child,
     );
   }
 }

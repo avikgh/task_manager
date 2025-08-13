@@ -28,7 +28,10 @@ class TaskManager extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide(color: Colors.white)
-          )
+          ),
+          hintStyle: TextStyle(
+            color: Colors.grey,
+          ),
         )
       ),
       home: SplashScreen(),
