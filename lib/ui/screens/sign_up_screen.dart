@@ -32,7 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   String? validate(String? value) {
     if (value?.trim().isEmpty ?? true) {
-      return 'Enter a value';
+      return 'Enter a valid value';
     }
     return null;
   }
