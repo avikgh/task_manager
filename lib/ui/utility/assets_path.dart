@@ -8,5 +8,5 @@ class AssetsPath {
 
   static const Color themeColor = Color(0xFF21BF73);
   static const Color headingTextColor = Colors.black87;
-  static const descriptionTextColor = Colors.grey;
+  static const Color descriptionTextColor = Colors.grey;
 }
