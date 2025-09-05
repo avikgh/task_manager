@@ -1,19 +1,19 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:task_manager/ui/screens/pin_verification_screen.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:task_manager/ui/screens/sign_in_screen.dart';
 import 'package:task_manager/ui/utility/assets_path.dart';
 import 'package:task_manager/ui/widgets/background_widget.dart';
 import 'package:task_manager/ui/widgets/custom_elevated_button.dart';
 
-class ForgetPasswordScreen extends StatefulWidget {
-  const ForgetPasswordScreen({super.key});
+class PinVerificationScreen extends StatefulWidget {
+  const PinVerificationScreen({super.key});
 
   @override
-  State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();
+  State<PinVerificationScreen> createState() => _PinVerificationScreenState();
 }
 
-class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
+class _PinVerificationScreenState extends State<PinVerificationScreen> {
   final TextEditingController _emailTEController = TextEditingController();
   final TextEditingController _passwordTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -59,22 +59,34 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                         color: Colors.grey, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 15),
-                  TextFormField(
-                    controller: _emailTEController,
-                    decoration: InputDecoration(hintText: 'Email'),
-                    validator: validate,
+                  PinCodeTextField(
+                    appContext: context,
+                    length: 6,
+                    keyboardType: TextInputType.number,
+                    // onChanged: (value) {
+                    //   setState(() {
+                    //     otpCode = value;
+                    //   });
+                    // },
+                    pinTheme: PinTheme(
+                      shape: PinCodeFieldShape.box,
+                      borderRadius: BorderRadius.circular(8),
+                      fieldHeight: 50,
+                      fieldWidth: 45,
+                      activeFillColor: Colors.white,
+                      selectedFillColor: Colors.white,
+                      inactiveFillColor: Colors.white,
+                      activeColor: Colors.green,
+                      selectedColor: Colors.red,
+                      inactiveColor: Colors.blue,
+                    ),
                   ),
                   const SizedBox(height: 15),
                   SizedBox(
                     height: 50,
                     width: double.maxFinite,
                     child: CustomElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PinVerificationScreen()));
-                      },
+                      onPressed: () {},
                       child: Icon(
                         Icons.keyboard_arrow_right_outlined,
                         color: Colors.white,
