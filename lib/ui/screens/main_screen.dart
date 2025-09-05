@@ -3,6 +3,7 @@ import 'package:task_manager/ui/screens/items/canceled_task_item.dart';
 import 'package:task_manager/ui/screens/items/completed_task_item.dart';
 import 'package:task_manager/ui/screens/items/new_task_item.dart';
 import 'package:task_manager/ui/screens/items/progress_task_item.dart';
+import 'package:task_manager/ui/utility/assets_path.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -43,6 +44,9 @@ class _MainScreenState extends State<MainScreen> {
       ),
       body: _bottomNavItemList[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: AssetsPath.themeColor,
+        useLegacyColorScheme: true,
+        backgroundColor: Colors.white,
         currentIndex: _currentIndex,
         onTap: (index) {
           _currentIndex = index;
