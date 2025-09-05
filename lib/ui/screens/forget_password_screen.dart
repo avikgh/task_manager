@@ -1,19 +1,18 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:task_manager/ui/screens/forget_password_screen.dart';
-import 'package:task_manager/ui/screens/sign_up_screen.dart';
+import 'package:task_manager/ui/screens/sign_in_screen.dart';
 import 'package:task_manager/ui/utility/assets_path.dart';
 import 'package:task_manager/ui/widgets/background_widget.dart';
 import 'package:task_manager/ui/widgets/custom_elevated_button.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class ForgetPasswordScreen extends StatefulWidget {
+  const ForgetPasswordScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   final TextEditingController _emailTEController = TextEditingController();
   final TextEditingController _passwordTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -47,22 +46,21 @@ class _SignInScreenState extends State<SignInScreen> {
                 children: [
                   SizedBox(height: size.height * 0.2),
                   const Text(
-                    'Get Started With',
+                    'Your Email Address',
                     style: TextStyle(
                         color: Colors.black87,
                         fontSize: 28,
                         fontWeight: FontWeight.bold),
                   ),
+                  const Text(
+                    'A six digit verification pin will send to your email address',
+                    style: TextStyle(
+                        color: Colors.grey, fontWeight: FontWeight.w500),
+                  ),
                   const SizedBox(height: 15),
                   TextFormField(
                     controller: _emailTEController,
                     decoration: InputDecoration(hintText: 'Email'),
-                    validator: validate,
-                  ),
-                  const SizedBox(height: 8),
-                  TextFormField(
-                    controller: _passwordTEController,
-                    decoration: InputDecoration(hintText: 'Password'),
                     validator: validate,
                   ),
                   const SizedBox(height: 15),
@@ -79,48 +77,30 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: size.height * 0.075,
+                    height: size.height * 0.065,
                   ),
                   Center(
-                    child: Column(
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        ForgetPasswordScreen()));
-                          },
-                          child: Text(
-                            'Forgot Password?',
-                            style: TextStyle(color: Colors.grey),
-                          ),
-                        ),
-                        RichText(
-                          text: TextSpan(
-                            text: 'Don\'t have an account? ',
-                            style: TextStyle(
-                                color: Colors.black87,
-                                fontWeight: FontWeight.bold),
-                            children: [
-                              TextSpan(
-                                text: 'Sign up',
-                                style: TextStyle(color: AssetsPath.themeColor),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => SignUpScreen(),
-                                      ),
-                                    );
-                                  },
-                              )
-                            ],
-                          ),
-                        )
-                      ],
+                    child: RichText(
+                      text: TextSpan(
+                        text: 'Have account? ',
+                        style: TextStyle(
+                            color: Colors.black87, fontWeight: FontWeight.bold),
+                        children: [
+                          TextSpan(
+                            text: 'Sign in',
+                            style: TextStyle(color: AssetsPath.themeColor),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SignInScreen(),
+                                  ),
+                                );
+                              },
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],
