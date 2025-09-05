@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:task_manager/ui/screens/forget_password_screen.dart';
+import 'package:task_manager/ui/screens/main_screen.dart';
 import 'package:task_manager/ui/screens/sign_up_screen.dart';
 import 'package:task_manager/ui/utility/assets_path.dart';
 import 'package:task_manager/ui/widgets/background_widget.dart';
@@ -70,7 +71,12 @@ class _SignInScreenState extends State<SignInScreen> {
                     height: 50,
                     width: double.maxFinite,
                     child: CustomElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MainScreen()));
+                      },
                       child: Icon(
                         Icons.keyboard_arrow_right_outlined,
                         color: Colors.white,

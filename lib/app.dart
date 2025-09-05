@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/ui/screens/splash_screen.dart';
+import 'package:task_manager/ui/utility/assets_path.dart';
 
 class TaskManager extends StatelessWidget {
   const TaskManager({super.key});
@@ -32,6 +33,20 @@ class TaskManager extends StatelessWidget {
           hintStyle: TextStyle(
             color: Colors.grey,
           ),
+        ),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          selectedIconTheme: IconThemeData(
+            color: AssetsPath.themeColor,
+          ),
+          unselectedIconTheme: IconThemeData(
+            color: Colors.grey
+          ),
+          selectedLabelStyle: TextStyle(
+            color: AssetsPath.themeColor
+          ),
+          unselectedLabelStyle: TextStyle(
+            color: Colors.grey
+          )
         )
       ),
       home: SplashScreen(),
