@@ -1,26 +1,29 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:task_manager/ui/screens/pin_verification_screen.dart';
+import 'package:task_manager/ui/screens/forget_password_screen.dart';
 import 'package:task_manager/ui/screens/sign_in_screen.dart';
+import 'package:task_manager/ui/screens/sign_up_screen.dart';
 import 'package:task_manager/ui/utility/assets_path.dart';
 import 'package:task_manager/ui/widgets/background_widget.dart';
 import 'package:task_manager/ui/widgets/custom_elevated_button.dart';
 
-class ForgetPasswordScreen extends StatefulWidget {
-  const ForgetPasswordScreen({super.key});
+class ChangePasswordScreen extends StatefulWidget {
+  const ChangePasswordScreen({super.key});
 
   @override
-  State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();
+  State<ChangePasswordScreen> createState() => _ChangePasswordScreenState();
 }
 
-class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
-  final TextEditingController _emailTEController = TextEditingController();
+class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
+  final TextEditingController _passwordTEController = TextEditingController();
+  final TextEditingController _confirmPasswordTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
     super.dispose();
-    _emailTEController.dispose();
+    _passwordTEController.dispose();
+    _confirmPasswordTEController.dispose();
   }
 
   String? validate(String? value) {
@@ -45,21 +48,27 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 children: [
                   SizedBox(height: size.height * 0.2),
                   const Text(
-                    'Your Email Address',
+                    'Set Password',
                     style: TextStyle(
                         color: Colors.black87,
                         fontSize: 28,
                         fontWeight: FontWeight.bold),
                   ),
                   const Text(
-                    'A six digit verification pin will send to your email address',
+                    'Minimum length password 8 character with latter and number combination',
                     style: TextStyle(
                         color: Colors.grey, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 15),
                   TextFormField(
-                    controller: _emailTEController,
-                    decoration: InputDecoration(hintText: 'Email'),
+                    controller: _passwordTEController,
+                    decoration: InputDecoration(hintText: 'Password'),
+                    validator: validate,
+                  ),
+                  const SizedBox(height: 8),
+                  TextFormField(
+                    controller: _confirmPasswordTEController,
+                    decoration: InputDecoration(hintText: 'Confirm Password'),
                     validator: validate,
                   ),
                   const SizedBox(height: 15),
@@ -67,12 +76,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     height: 50,
                     width: double.maxFinite,
                     child: CustomElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PinVerificationScreen()));
-                      },
+                      onPressed: () {},
                       child: Icon(
                         Icons.keyboard_arrow_right_outlined,
                         color: Colors.white,

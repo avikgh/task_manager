@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:task_manager/change_password_screen.dart';
 import 'package:task_manager/ui/screens/sign_in_screen.dart';
 import 'package:task_manager/ui/utility/assets_path.dart';
 import 'package:task_manager/ui/widgets/background_widget.dart';
@@ -14,15 +15,11 @@ class PinVerificationScreen extends StatefulWidget {
 }
 
 class _PinVerificationScreenState extends State<PinVerificationScreen> {
-  final TextEditingController _emailTEController = TextEditingController();
-  final TextEditingController _passwordTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
     super.dispose();
-    _emailTEController.dispose();
-    _passwordTEController.dispose();
   }
 
   String? validate(String? value) {
@@ -47,7 +44,7 @@ class _PinVerificationScreenState extends State<PinVerificationScreen> {
                 children: [
                   SizedBox(height: size.height * 0.2),
                   const Text(
-                    'Your Email Address',
+                    'Pin Verification',
                     style: TextStyle(
                         color: Colors.black87,
                         fontSize: 28,
@@ -86,7 +83,12 @@ class _PinVerificationScreenState extends State<PinVerificationScreen> {
                     height: 50,
                     width: double.maxFinite,
                     child: CustomElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ChangePasswordScreen()));
+                      },
                       child: Icon(
                         Icons.keyboard_arrow_right_outlined,
                         color: Colors.white,
