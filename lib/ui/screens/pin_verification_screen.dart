@@ -60,6 +60,8 @@ class _PinVerificationScreenState extends State<PinVerificationScreen> {
                     appContext: context,
                     length: 6,
                     keyboardType: TextInputType.number,
+                    enableActiveFill: true,
+                    backgroundColor: Colors.transparent,
                     // onChanged: (value) {
                     //   setState(() {
                     //     otpCode = value;
