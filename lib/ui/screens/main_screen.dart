@@ -44,9 +44,6 @@ class _MainScreenState extends State<MainScreen> {
       ),
       body: _bottomNavItemList[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: AssetsPath.themeColor,
-        useLegacyColorScheme: true,
-        backgroundColor: Colors.white,
         currentIndex: _currentIndex,
         onTap: (index) {
           _currentIndex = index;

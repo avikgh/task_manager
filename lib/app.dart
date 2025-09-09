@@ -34,23 +34,6 @@ class TaskManager extends StatelessWidget {
             color: Colors.grey,
           ),
         ),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          backgroundColor: Colors.white,
-          selectedIconTheme: IconThemeData(
-            color: Colors.white,
-          ),
-          unselectedIconTheme: IconThemeData(
-            color: Colors.black
-          ),
-          selectedLabelStyle: TextStyle(
-            color: Colors.white
-          ),
-          unselectedLabelStyle: TextStyle(
-            color: Colors.black
-          ),
-          showSelectedLabels: true,
-          showUnselectedLabels: true
-        )
       ),
       home: SplashScreen(),
     );
