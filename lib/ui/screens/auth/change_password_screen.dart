@@ -72,7 +72,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     height: 50,
                     width: double.maxFinite,
                     child: CustomElevatedButton(
-                        onPressed: () {}, child: Text('Confirm')),
+                        onPressed: () {},
+                        child: Text('Confirm', style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white
+                        ),)),
                   ),
                   SizedBox(
                     height: size.height * 0.065,

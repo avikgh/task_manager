@@ -4,6 +4,7 @@ import 'package:task_manager/ui/screens/items/completed_task_item.dart';
 import 'package:task_manager/ui/screens/items/new_task_item.dart';
 import 'package:task_manager/ui/screens/items/progress_task_item.dart';
 import 'package:task_manager/ui/utility/assets_path.dart';
+import 'package:task_manager/ui/widgets/cached_network_image.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -27,12 +28,8 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: Icon(
-            Icons.account_circle_outlined,
-            color: Colors.white,
-            size: 35,
-          ),
+          padding: const EdgeInsets.only(left: 15),
+          child: CachedNetImage(url: 'https://cdn-icons-png.flaticon.com/512/8345/8345328.png')
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,18 +44,20 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ],
         ),
-        titleSpacing: 0,
+        titleSpacing: 10,
       ),
       body: _bottomNavItemList[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AssetsPath.themeColor,
         selectedItemColor: AssetsPath.themeColor,
         showUnselectedLabels: true,
-        unselectedItemColor: Colors.black87,
+        showSelectedLabels: true,
+        unselectedItemColor: Colors.black54,
         currentIndex: _currentIndex,
         onTap: (index) {
-          _currentIndex = index;
-          setState(() {});
+          if(mounted) {
+            _currentIndex = index;
+            setState(() {});
+          }
         },
         items: [
           BottomNavigationBarItem(
@@ -66,11 +65,11 @@ class _MainScreenState extends State<MainScreen> {
               label: 'New',
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
-              icon: Icon(Icons.event_note_outlined), label: 'Completed'),
+              icon: Icon(Icons.event_available), label: 'Completed'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.event_note_outlined), label: 'Canceled'),
+              icon: Icon(Icons.event_busy), label: 'Canceled'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.event_note_outlined), label: 'Progress'),
+              icon: Icon(Icons.event_repeat), label: 'Progress'),
         ],
       ),
     );

@@ -82,7 +82,10 @@ class _PinVerificationScreenState extends State<PinVerificationScreen> {
                       onPressed: () {
                         _onTapMoveToChangePasswordScreen(context);
                       },
-                      child: Text('Verify')
+                      child: Text('Verify', style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white
+                      ),)
                     ),
                   ),
                   SizedBox(
