@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:task_manager/ui/screens/sign_in_screen.dart';
+import 'package:task_manager/ui/screens/auth/sign_in_screen.dart';
 import 'package:task_manager/ui/utility/assets_path.dart';
 import 'package:task_manager/ui/widgets/background_widget.dart';
 
@@ -12,7 +12,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  Future<void> moveToTheSignInScreen() async {
+  Future<void> _moveToTheSignInScreen() async {
     await Future.delayed(Duration(seconds: 3));
     Navigator.push(
       context,
@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    moveToTheSignInScreen();
+    _moveToTheSignInScreen();
     super.initState();
   }
 

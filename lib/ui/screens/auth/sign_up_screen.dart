@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:task_manager/ui/screens/sign_in_screen.dart';
+import 'package:task_manager/ui/screens/auth/sign_in_screen.dart';
 import 'package:task_manager/ui/utility/assets_path.dart';
 import 'package:task_manager/ui/widgets/background_widget.dart';
 import 'package:task_manager/ui/widgets/custom_elevated_button.dart';
@@ -51,40 +51,48 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: size.height * 0.15),
-                  const Text(
+                  Text(
                     'Join With Us',
-                    style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.titleLarge
                   ),
                   const SizedBox(height: 15),
                   TextFormField(
                     controller: _emailTEController,
+                    keyboardType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(hintText: 'Email'),
                     validator: validate,
                   ),
                   const SizedBox(height: 8),
                   TextFormField(
                     controller: _firstNameTEController,
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(hintText: 'Firstname'),
                     validator: validate,
                   ),
                   const SizedBox(height: 8),
                   TextFormField(
                     controller: _lastNameTEController,
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(hintText: 'Lastname'),
                     validator: validate,
                   ),
                   const SizedBox(height: 8),
                   TextFormField(
                     controller: _mobileTEController,
+                    keyboardType: TextInputType.phone,
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(hintText: 'Mobile'),
                     validator: validate,
                   ),
                   const SizedBox(height: 8),
                   TextFormField(
                     controller: _passwordTEController,
+                    keyboardType: TextInputType.text,
+                    obscureText: true,
+                    textInputAction: TextInputAction.done,
                     decoration: InputDecoration(hintText: 'Password'),
                     validator: validate,
                   ),
@@ -103,33 +111,44 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   SizedBox(height: size.height * 0.04),
                   Center(
-                    child: RichText(
-                      text: TextSpan(
-                        text: 'Have account? ',
-                        style: TextStyle(
-                            color: Colors.black87, fontWeight: FontWeight.bold),
-                        children: [
-                          TextSpan(
-                            text: 'Sign in',
-                            style: TextStyle(color: AssetsPath.themeColor),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SignInScreen()),
-                                );
-                              },
-                          )
-                        ],
-                      ),
-                    ),
+                    child: _backToSignInSection(),
                   )
                 ],
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _backToSignInSection extends StatelessWidget {
+  const _backToSignInSection({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        text: 'Have account? ',
+        style: TextStyle(
+            color: Colors.black87, fontWeight: FontWeight.bold),
+        children: [
+          TextSpan(
+            text: 'Sign in',
+            style: TextStyle(color: AssetsPath.themeColor),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SignInScreen()),
+                );
+              },
+          )
+        ],
       ),
     );
   }

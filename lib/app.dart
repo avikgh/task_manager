@@ -10,30 +10,45 @@ class TaskManager extends StatelessWidget {
     return MaterialApp(
       title: 'Task Manager',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          inputDecorationTheme: InputDecorationTheme(
-            fillColor: Colors.white,
-            filled: true,
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: Colors.white)),
-            disabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: Colors.white)),
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: Colors.white)),
-            focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: Colors.white)),
-            hintStyle: TextStyle(
-              color: Colors.grey,
-            ),
-          ),
-          appBarTheme: AppBarTheme(
-              backgroundColor: AssetsPath.themeColor,
-              titleTextStyle: TextStyle(color: Colors.white))),
+      theme: _buildLightTheme(),
       home: SplashScreen(),
+    );
+  }
+
+  ThemeData _buildLightTheme() {
+    return ThemeData(
+      inputDecorationTheme: InputDecorationTheme(
+        fillColor: Colors.white,
+        filled: true,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: Colors.white),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: Colors.white),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: Colors.white),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: Colors.white),
+        ),
+        hintStyle: TextStyle(
+          color: Colors.grey,
+        ),
+      ),
+      appBarTheme: AppBarTheme(
+        backgroundColor: AssetsPath.themeColor,
+        titleTextStyle: TextStyle(color: Colors.white),
+      ),
+      textTheme: TextTheme(
+        titleLarge: TextStyle(
+            color: Colors.black87, fontSize: 28, fontWeight: FontWeight.bold),
+        titleSmall: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
+      ),
     );
   }
 }

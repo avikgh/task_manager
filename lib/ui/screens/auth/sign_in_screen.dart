@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:task_manager/ui/screens/forget_password_screen.dart';
+import 'package:task_manager/ui/screens/auth/forget_password_screen.dart';
 import 'package:task_manager/ui/screens/main_screen.dart';
-import 'package:task_manager/ui/screens/sign_up_screen.dart';
+import 'package:task_manager/ui/screens/auth/sign_up_screen.dart';
 import 'package:task_manager/ui/utility/assets_path.dart';
 import 'package:task_manager/ui/widgets/background_widget.dart';
 import 'package:task_manager/ui/widgets/custom_elevated_button.dart';
@@ -47,22 +47,23 @@ class _SignInScreenState extends State<SignInScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: size.height * 0.2),
-                  const Text(
+                  Text(
                     'Get Started With',
-                    style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 15),
                   TextFormField(
                     controller: _emailTEController,
+                    keyboardType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(hintText: 'Email'),
                     validator: validate,
                   ),
                   const SizedBox(height: 8),
                   TextFormField(
                     controller: _passwordTEController,
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.done,
                     decoration: InputDecoration(hintText: 'Password'),
                     validator: validate,
                   ),
@@ -72,10 +73,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     width: double.maxFinite,
                     child: CustomElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MainScreen()));
+                        _onTapMoveToMainScreen(context);
                       },
                       child: Icon(
                         Icons.keyboard_arrow_right_outlined,
@@ -92,40 +90,14 @@ class _SignInScreenState extends State<SignInScreen> {
                       children: [
                         TextButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        ForgetPasswordScreen()));
+                            _onTapMoveToForgetPasswordScreen(context);
                           },
                           child: Text(
                             'Forgot Password?',
                             style: TextStyle(color: Colors.grey),
                           ),
                         ),
-                        RichText(
-                          text: TextSpan(
-                            text: 'Don\'t have an account? ',
-                            style: TextStyle(
-                                color: Colors.black87,
-                                fontWeight: FontWeight.bold),
-                            children: [
-                              TextSpan(
-                                text: 'Sign up',
-                                style: TextStyle(color: AssetsPath.themeColor),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => SignUpScreen(),
-                                      ),
-                                    );
-                                  },
-                              )
-                            ],
-                          ),
-                        )
+                        _moveToSignUpScreen()
                       ],
                     ),
                   )
@@ -134,6 +106,57 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  void _onTapMoveToForgetPasswordScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const ForgetPasswordScreen(),
+      ),
+    );
+  }
+
+  void _onTapMoveToMainScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const MainScreen(),
+      ),
+    );
+  }
+}
+
+class _moveToSignUpScreen extends StatelessWidget {
+  const _moveToSignUpScreen({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        text: 'Don\'t have an account? ',
+        style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.bold),
+        children: [
+          TextSpan(
+            text: 'Sign up',
+            style: TextStyle(color: AssetsPath.themeColor),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SignUpScreen(),
+                  ),
+                );
+              },
+          )
+        ],
       ),
     );
   }

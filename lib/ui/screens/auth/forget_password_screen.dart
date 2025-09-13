@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:task_manager/ui/screens/pin_verification_screen.dart';
-import 'package:task_manager/ui/screens/sign_in_screen.dart';
+import 'package:task_manager/ui/screens/auth/pin_verification_screen.dart';
+import 'package:task_manager/ui/screens/auth/sign_in_screen.dart';
 import 'package:task_manager/ui/utility/assets_path.dart';
 import 'package:task_manager/ui/widgets/background_widget.dart';
 import 'package:task_manager/ui/widgets/custom_elevated_button.dart';
@@ -44,21 +44,15 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: size.height * 0.2),
-                  const Text(
-                    'Your Email Address',
-                    style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const Text(
-                    'A six digit verification pin will send to your email address',
-                    style: TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.w500),
-                  ),
+                  Text('Your Email Address',
+                      style: Theme.of(context).textTheme.titleLarge),
+                  Text(
+                      'A six digit verification pin will send to your email address',
+                      style: Theme.of(context).textTheme.titleSmall),
                   const SizedBox(height: 15),
                   TextFormField(
                     controller: _emailTEController,
+                    textInputAction: TextInputAction.done,
                     decoration: InputDecoration(hintText: 'Email'),
                     validator: validate,
                   ),
@@ -68,10 +62,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     width: double.maxFinite,
                     child: CustomElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PinVerificationScreen()));
+                        _onTapMoveToPinVerificationScreen(context);
                       },
                       child: Icon(
                         Icons.keyboard_arrow_right_outlined,
@@ -84,34 +75,53 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     height: size.height * 0.065,
                   ),
                   Center(
-                    child: RichText(
-                      text: TextSpan(
-                        text: 'Have account? ',
-                        style: TextStyle(
-                            color: Colors.black87, fontWeight: FontWeight.bold),
-                        children: [
-                          TextSpan(
-                            text: 'Sign in',
-                            style: TextStyle(color: AssetsPath.themeColor),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SignInScreen(),
-                                  ),
-                                );
-                              },
-                          )
-                        ],
-                      ),
-                    ),
+                    child: _backToSignInScreenSection(),
                   )
                 ],
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  void _onTapMoveToPinVerificationScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PinVerificationScreen(),
+      ),
+    );
+  }
+}
+
+class _backToSignInScreenSection extends StatelessWidget {
+  const _backToSignInScreenSection({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        text: 'Have account? ',
+        style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
+        children: [
+          TextSpan(
+            text: 'Sign in',
+            style: TextStyle(color: AssetsPath.themeColor),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SignInScreen(),
+                  ),
+                );
+              },
+          )
+        ],
       ),
     );
   }
