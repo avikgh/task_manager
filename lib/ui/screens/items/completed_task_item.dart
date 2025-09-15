@@ -14,7 +14,12 @@ class _CompletedTaskItemState extends State<CompletedTaskItem> {
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {
-          return Card();
+          return Card(
+            child: ListTile(
+              title: Text('New Task'),
+              subtitle: Text('This a new task. which was made right now.'),
+            ),
+          );
         },
       ),
     );

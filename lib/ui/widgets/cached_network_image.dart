@@ -2,7 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CachedNetImage extends StatelessWidget {
-  const CachedNetImage({super.key, required this.url, this.width, this.height, this.boxFit});
+  const CachedNetImage(
+      {super.key, required this.url, this.width, this.height, this.boxFit});
 
   final String url;
   final double? width;
