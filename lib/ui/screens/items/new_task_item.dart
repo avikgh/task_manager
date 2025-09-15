@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/task_container.dart';
+
 class NewTaskItem extends StatefulWidget {
   const NewTaskItem({super.key});
 
@@ -128,12 +130,7 @@ class _NewTaskItemState extends State<NewTaskItem> {
             child: ListView.builder(
               itemCount: 10,
               itemBuilder: (context, index) {
-                return Card(
-                  child: ListTile(
-                    title: Text('New Task'),
-                    subtitle: Text('This a new task. which was made right now.'),
-                  ),
-                );
+                return TaskContainer(chipBackgroundColor: Color(0xFF17C2E8));
               },
             ),
           ),
