@@ -27,24 +27,34 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 15),
-          child: CachedNetImage(url: 'https://cdn-icons-png.flaticon.com/512/8345/8345328.png')
+        leading: GestureDetector(
+          onTap: () {
+            print('Tap on Update Profile');
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(left: 15),
+            child: CachedNetImage(url: 'https://cdn-icons-png.flaticon.com/512/8345/8345328.png')
+          ),
         ),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Avik Ghosh',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-            Text(
-              'avikgh77@gmail.com',
-              style: TextStyle(fontSize: 14),
-            ),
-          ],
+        title: GestureDetector(
+          onTap: () {
+            print('Tap on Update Profile');
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Avik Ghosh',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+              Text(
+                'avikgh77@gmail.com',
+                style: TextStyle(fontSize: 14),
+              ),
+            ],
+          ),
         ),
-        titleSpacing: 10,
+        titleSpacing: 5,
       ),
       body: _bottomNavItemList[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(

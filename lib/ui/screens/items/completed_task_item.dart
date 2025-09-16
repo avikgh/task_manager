@@ -13,6 +13,7 @@ class _CompletedTaskItemState extends State<CompletedTaskItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFFAF7F5),
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {

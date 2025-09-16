@@ -49,6 +49,13 @@ class TaskManager extends StatelessWidget {
             color: Colors.black87, fontSize: 28, fontWeight: FontWeight.bold),
         titleSmall: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
       ),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: AssetsPath.themeColor,
+        elevation: 1,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50)
+        )
+      )
     );
   }
 }

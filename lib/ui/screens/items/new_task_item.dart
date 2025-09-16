@@ -13,6 +13,13 @@ class _NewTaskItemState extends State<NewTaskItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFFAF7F5),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('Add New Task');
+        },
+        child: Icon(Icons.add, size: 20, color: Colors.white),
+      ),
       body: Column(
         children: [
           SingleChildScrollView(
