@@ -4,9 +4,11 @@ class TaskContainer extends StatelessWidget {
   const TaskContainer({
     super.key,
     required this.chipBackgroundColor,
+    required this.title,
   });
 
   final Color chipBackgroundColor;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +63,7 @@ class TaskContainer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Canceled',
+                          title,
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 10,

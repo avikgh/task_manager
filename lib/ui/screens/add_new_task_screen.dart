@@ -22,8 +22,9 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
             print('Tap on Update Profile');
           },
           child: Padding(
-              padding: const EdgeInsets.only(left: 15),
-              child: CachedNetImage(url: 'https://cdn-icons-png.flaticon.com/512/8345/8345328.png')
+            padding: const EdgeInsets.only(left: 15),
+            child: CachedNetImage(
+                url: 'https://cdn-icons-png.flaticon.com/512/8345/8345328.png'),
           ),
         ),
         title: GestureDetector(
@@ -56,19 +57,18 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: size.height * 0.08),
-                  Text('Add New Task', style: Theme.of(context).textTheme.titleLarge,),
+                  Text(
+                    'Add New Task',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                   const SizedBox(height: 17),
                   TextFormField(
-                    decoration: InputDecoration(
-                      hintText: 'Title'
-                    ),
+                    decoration: InputDecoration(hintText: 'Title'),
                   ),
                   const SizedBox(height: 14),
                   TextFormField(
                     maxLines: 6,
-                    decoration: InputDecoration(
-                      hintText: 'Description'
-                    ),
+                    decoration: InputDecoration(hintText: 'Description'),
                   ),
                   const SizedBox(height: 25),
                   SizedBox(

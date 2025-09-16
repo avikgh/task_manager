@@ -51,10 +51,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: size.height * 0.15),
-                  Text(
-                    'Join With Us',
-                    style: Theme.of(context).textTheme.titleLarge
-                  ),
+                  Text('Join With Us',
+                      style: Theme.of(context).textTheme.titleLarge),
                   const SizedBox(height: 15),
                   TextFormField(
                     controller: _emailTEController,
@@ -133,8 +131,7 @@ class _backToSignInSection extends StatelessWidget {
     return RichText(
       text: TextSpan(
         text: 'Have account? ',
-        style: TextStyle(
-            color: Colors.black87, fontWeight: FontWeight.bold),
+        style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
         children: [
           TextSpan(
             text: 'Sign in',
@@ -143,8 +140,7 @@ class _backToSignInSection extends StatelessWidget {
               ..onTap = () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const SignInScreen()),
+                  MaterialPageRoute(builder: (context) => const SignInScreen()),
                 );
               },
           )

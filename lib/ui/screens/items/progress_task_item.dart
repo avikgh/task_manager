@@ -17,7 +17,10 @@ class _ProgressTaskItemState extends State<ProgressTaskItem> {
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {
-          return TaskContainer(chipBackgroundColor: Color(0xFFCC0C9F));
+          return TaskContainer(
+            chipBackgroundColor: Color(0xFFCC0C9F),
+            title: 'Progress',
+          );
         },
       ),
     );

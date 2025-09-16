@@ -3,6 +3,7 @@ import 'package:task_manager/ui/screens/items/canceled_task_item.dart';
 import 'package:task_manager/ui/screens/items/completed_task_item.dart';
 import 'package:task_manager/ui/screens/items/new_task_item.dart';
 import 'package:task_manager/ui/screens/items/progress_task_item.dart';
+import 'package:task_manager/ui/screens/update_profile_screen.dart';
 import 'package:task_manager/ui/utility/assets_path.dart';
 import 'package:task_manager/ui/widgets/cached_network_image.dart';
 
@@ -29,16 +30,17 @@ class _MainScreenState extends State<MainScreen> {
       appBar: AppBar(
         leading: GestureDetector(
           onTap: () {
-            print('Tap on Update Profile');
+            _onTapMoveToUpdateProfileScreen(context);
           },
           child: Padding(
             padding: const EdgeInsets.only(left: 15),
-            child: CachedNetImage(url: 'https://cdn-icons-png.flaticon.com/512/8345/8345328.png')
+            child: CachedNetImage(
+                url: 'https://cdn-icons-png.flaticon.com/512/8345/8345328.png'),
           ),
         ),
         title: GestureDetector(
           onTap: () {
-            print('Tap on Update Profile');
+            _onTapMoveToUpdateProfileScreen(context);
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +66,7 @@ class _MainScreenState extends State<MainScreen> {
         unselectedItemColor: Colors.black54,
         currentIndex: _currentIndex,
         onTap: (index) {
-          if(mounted) {
+          if (mounted) {
             _currentIndex = index;
             setState(() {});
           }
@@ -83,5 +85,10 @@ class _MainScreenState extends State<MainScreen> {
         ],
       ),
     );
+  }
+
+  void _onTapMoveToUpdateProfileScreen(BuildContext context) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => UpdateProfileScreen()));
   }
 }

@@ -17,7 +17,10 @@ class _CompletedTaskItemState extends State<CompletedTaskItem> {
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {
-          return TaskContainer(chipBackgroundColor: Color(0xFF21BF73));
+          return TaskContainer(
+            chipBackgroundColor: Color(0xFF21BF73),
+            title: 'Completed',
+          );
         },
       ),
     );

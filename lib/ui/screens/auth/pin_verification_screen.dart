@@ -79,14 +79,13 @@ class _PinVerificationScreenState extends State<PinVerificationScreen> {
                     height: 50,
                     width: double.maxFinite,
                     child: CustomElevatedButton(
-                      onPressed: () {
-                        _onTapMoveToChangePasswordScreen(context);
-                      },
-                      child: Text('Verify', style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white
-                      ),)
-                    ),
+                        onPressed: () {
+                          _onTapMoveToChangePasswordScreen(context);
+                        },
+                        child: Text(
+                          'Verify',
+                          style: TextStyle(fontSize: 16, color: Colors.white),
+                        )),
                   ),
                   SizedBox(
                     height: size.height * 0.065,

@@ -17,7 +17,10 @@ class _CanceledTaskItemState extends State<CanceledTaskItem> {
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {
-          return TaskContainer(chipBackgroundColor: Color(0xFFF25055),);
+          return TaskContainer(
+            chipBackgroundColor: Color(0xFFF25055),
+            title: 'Canceled',
+          );
         },
       ),
     );

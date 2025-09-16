@@ -154,7 +154,10 @@ class _NewTaskItemState extends State<NewTaskItem> {
               child: ListView.builder(
                 itemCount: 10,
                 itemBuilder: (context, index) {
-                  return TaskContainer(chipBackgroundColor: Color(0xFF17C2E8));
+                  return TaskContainer(
+                    chipBackgroundColor: Color(0xFF17C2E8),
+                    title: 'New',
+                  );
                 },
               ),
             ),
@@ -163,7 +166,7 @@ class _NewTaskItemState extends State<NewTaskItem> {
   }
 
   void _onTapMoveToAddNewTaskScreen(BuildContext context) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => AddNewTaskScreen()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => AddNewTaskScreen()));
   }
 }

@@ -139,9 +139,7 @@ class _moveToSignUpScreen extends StatelessWidget {
     return RichText(
       text: TextSpan(
         text: 'Don\'t have an account? ',
-        style: TextStyle(
-            color: Colors.black87,
-            fontWeight: FontWeight.bold),
+        style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
         children: [
           TextSpan(
             text: 'Sign up',

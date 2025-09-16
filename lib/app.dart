@@ -53,9 +53,9 @@ class TaskManager extends StatelessWidget {
         backgroundColor: AssetsPath.themeColor,
         elevation: 1,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50)
-        )
-      )
+          borderRadius: BorderRadius.circular(50),
+        ),
+      ),
     );
   }
 }
