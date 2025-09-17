@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../widgets/background_widget.dart';
 import '../widgets/cached_network_image.dart';
 import '../widgets/custom_elevated_button.dart';
