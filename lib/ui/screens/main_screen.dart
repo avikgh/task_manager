@@ -3,9 +3,8 @@ import 'package:task_manager/ui/screens/items/canceled_task_item.dart';
 import 'package:task_manager/ui/screens/items/completed_task_item.dart';
 import 'package:task_manager/ui/screens/items/new_task_item.dart';
 import 'package:task_manager/ui/screens/items/progress_task_item.dart';
-import 'package:task_manager/ui/screens/update_profile_screen.dart';
 import 'package:task_manager/ui/utility/assets_path.dart';
-import 'package:task_manager/ui/widgets/cached_network_image.dart';
+import '../widgets/custom_appbar.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -27,37 +26,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: GestureDetector(
-          onTap: () {
-            _onTapMoveToUpdateProfileScreen(context);
-          },
-          child: Padding(
-            padding: const EdgeInsets.only(left: 15),
-            child: CachedNetImage(
-                url: 'https://cdn-icons-png.flaticon.com/512/8345/8345328.png'),
-          ),
-        ),
-        title: GestureDetector(
-          onTap: () {
-            _onTapMoveToUpdateProfileScreen(context);
-          },
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Avik Ghosh',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-              ),
-              Text(
-                'avikgh77@gmail.com',
-                style: TextStyle(fontSize: 14),
-              ),
-            ],
-          ),
-        ),
-        titleSpacing: 5,
-      ),
+      appBar: CustomAppBar(context),
       body: _bottomNavItemList[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: AssetsPath.themeColor,
@@ -85,10 +54,5 @@ class _MainScreenState extends State<MainScreen> {
         ],
       ),
     );
-  }
-
-  void _onTapMoveToUpdateProfileScreen(BuildContext context) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => UpdateProfileScreen()));
   }
 }
