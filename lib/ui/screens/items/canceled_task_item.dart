@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../widgets/task_container.dart';
+import '../../widgets/task_summary_section.dart';
 
 class CanceledTaskItem extends StatefulWidget {
   const CanceledTaskItem({super.key});
@@ -14,14 +15,24 @@ class _CanceledTaskItemState extends State<CanceledTaskItem> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFFAF7F5),
-      body: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return TaskContainer(
-            chipBackgroundColor: Color(0xFFF25055),
-            title: 'Canceled',
-          );
-        },
+      body: Column(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: TaskSummarySection(),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return TaskContainer(
+                  chipBackgroundColor: Color(0xFFF25055),
+                  title: 'Canceled',
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

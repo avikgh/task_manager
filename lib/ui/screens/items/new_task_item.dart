@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/ui/screens/add_new_task_screen.dart';
-
+import 'package:task_manager/ui/widgets/task_summary_section.dart';
 import '../../widgets/task_container.dart';
-import '../../widgets/task_summary_card.dart';
 
 class NewTaskItem extends StatefulWidget {
   const NewTaskItem({super.key});
@@ -26,14 +25,7 @@ class _NewTaskItemState extends State<NewTaskItem> {
           children: [
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  TaskSummaryCard(taskCount: '04', taskType: 'New',),
-                  TaskSummaryCard(taskCount: '08', taskType: 'Completed',),
-                  TaskSummaryCard(taskCount: '06', taskType: 'Canceled',),
-                  TaskSummaryCard(taskCount: '10', taskType: 'Progress',),
-                ],
-              ),
+              child: TaskSummarySection(),
             ),
             Expanded(
               child: ListView.builder(
