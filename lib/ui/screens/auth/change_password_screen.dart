@@ -76,7 +76,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         child: Text(
                           'Confirm',
                           style: TextStyle(fontSize: 16, color: Colors.white),
-                        )),
+                        ),),
                   ),
                   SizedBox(
                     height: size.height * 0.065,
