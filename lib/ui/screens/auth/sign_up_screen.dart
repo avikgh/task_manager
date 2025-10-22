@@ -20,6 +20,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _lastNameTEController = TextEditingController();
   final TextEditingController _mobileTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool isPasswordVisible = false;
 
   @override
   void dispose() {
@@ -62,10 +63,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(hintText: 'Email'),
                     validator: (value) {
-                      if(value?.trim().isEmpty ?? true) {
+                      if (value?.trim().isEmpty ?? true) {
                         return 'Enter your email address';
                       }
-                      if(AppConstraint.emailRegExp.hasMatch(value!) == false) {
+                      if (AppConstraint.emailRegExp.hasMatch(value!) == false) {
                         return 'Enter a valid email address';
                       }
                       return null;
@@ -99,9 +100,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   TextFormField(
                     controller: _passwordTEController,
                     keyboardType: TextInputType.text,
-                    obscureText: true,
+                    obscureText: isPasswordVisible,
                     textInputAction: TextInputAction.done,
-                    decoration: InputDecoration(hintText: 'Password'),
+                    decoration: InputDecoration(
+                        hintText: 'Password',
+                        suffixIcon: GestureDetector(
+                            onTap: () {
+                              isPasswordVisible = !isPasswordVisible;
+                              setState(() {});
+                            },
+                            child: Icon(isPasswordVisible
+                                ? Icons.visibility_off_outlined
+                                : Icons.visibility_outlined))),
                     validator: validate,
                   ),
                   const SizedBox(height: 15),
